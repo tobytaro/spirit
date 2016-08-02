@@ -1,0 +1,9 @@
+<linker>
+	<assembly fullname="Assembly-CSharp">
+		<type fullname="Kudan.AR.Samples.SampleApp">
+			<method name="StartClicked"/>
+			<method name="MarkerClicked"/>
+			<method name="MarkerlessClicked"/>
+		</type>
+	</assembly>
+</linker>
