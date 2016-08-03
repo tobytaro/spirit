@@ -10,81 +10,45 @@ namespace InfinityCode.OnlineMapsExamples
     public class FindPlacesExample : MonoBehaviour
     {
         private void Start()
-
-
         {
             OnlineMapsFindPlaces.FindNearby(
-                new Vector2(114.1713f, 22.37683f),
-                500,
-                "AIzaSyA2wBzywoA6IGas5UMsCPwnQq28VzqhOvg",
-                // "AIzaSyA2wBzywoA6IGas5UMsCPwnQq28VzqhOvg", // <----------------------------- Google API Key
+                new Vector2(151.1957362f, -33.8670522f),
+                5000,
+                "ADD YOUR OWN KEY HERE", // <----------------------------- Google API Key
                 null,
-                null
-                )
-                
-                
-                .OnComplete += OnComplete;
-           
+                null,
+                "food").OnComplete += OnComplete;
         }
 
-       private void OnComplete(string s)
+        private void OnComplete(string s)
         {
             OnlineMapsFindPlacesResult[] results = OnlineMapsFindPlaces.GetResults(s);
-            List<OnlineMapsDirectionStep> steps = OnlineMapsDirectionStep.TryParse(s);
             if (results == null)
             {
-                Debug.Log("cannot connect API");
+                Debug.Log("Error");
                 Debug.Log(s);
                 return;
-            
-                
             }
 
             List<OnlineMapsMarker> markers = new List<OnlineMapsMarker>();
-            if (steps != null)
+
+            foreach (OnlineMapsFindPlacesResult result in results)
             {
+                Debug.Log(result.name);
+                Debug.Log(result.location);
 
-                foreach (OnlineMapsFindPlacesResult result in results)
-                {
-                    Debug.Log(result.name);
-                    Debug.Log(result.location);
-                    
-
-                    List<Vector2> points = OnlineMapsDirectionStep.GetPoints(steps);
-
-                    OnlineMapsDrawingLine route = new OnlineMapsDrawingLine(points, new Color(1, 1, 1, 0.5f), 7);
-
-                    OnlineMaps.instance.AddDrawingElement(route);
-
-                  
-                     OnlineMapsMarker marker = OnlineMaps.instance.AddMarker(result.location, result.name);
-
-                    markers.Add(marker);
-
-
-                }
+                OnlineMapsMarker marker = OnlineMaps.instance.AddMarker(result.location, result.name);
+                markers.Add(marker);
             }
-            else
-            {
-                Debug.Log("Find direction failed");
-            }
-        }
 
-
-        //   Vector2 center;
-
-        /*
-                    List<Vector2> points = OnlineMapsDirectionStep.GetPoints(steps);
-                    OnlineMapsDrawingLine route = new OnlineMapsDrawingLine(points, Color.green);
-                    OnlineMaps.instance.AddDrawingElement(route);
-                    */
-        /*
+            Vector2 center;
             int zoom;
             OnlineMapsUtils.GetCenterPointAndZoom(markers.ToArray(), out center, out zoom);
 
             OnlineMaps.instance.position = center;
-            OnlineMaps.instance.zoom = zoom + 1; */
-          
+            OnlineMaps.instance.zoom = zoom + 1;
+        }
+
+
     }
 }
-

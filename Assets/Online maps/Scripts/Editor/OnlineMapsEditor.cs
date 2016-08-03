@@ -446,12 +446,11 @@ public class OnlineMapsEditor : Editor
             }
             EditorGUILayout.EndVertical();
         }
-    }
 
-/*#if UNITY_WEBPLAYER
+#if UNITY_WEBPLAYER
         if (provider != OnlineMapsProviderEnum.custom) GUILayout.Label("This provider can be slow on Webplayer");
 #endif
-    }*/
+    }
 
     private void DrawSaveGUI(ref bool dirty)
     {

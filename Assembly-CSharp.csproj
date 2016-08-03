@@ -199,6 +199,9 @@
      <Compile Include="Assets\Online maps\Scripts\XML\OnlineMapsXMLList.cs" />
      <Compile Include="Assets\Online maps\Scripts\XML\OnlineMapsXMLListEnum.cs" />
      <Compile Include="Assets\Online maps\Scripts\XML\OnlineMapsXMLNamespaceManager.cs" />
+     <Compile Include="Assets\Scripts\FindNearbyPOI.cs" />
+     <Compile Include="Assets\Sounds\script\Mic.cs" />
+     <Compile Include="Assets\Sounds\script\soundmeasuring.cs" />
      <None Include="Assets\KudanAR\Materials\Background.shader" />
      <None Include="Assets\Online maps\Shaders\TilesetShader.shader" />
      <None Include="Assets\Online maps\Shaders\TilesetCutoutShader.shader" />
